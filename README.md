@@ -30,6 +30,17 @@ export SHEETS_WEBHOOK_URL="https://script.google.com/macros/s/XXXX/exec"
 npm start
 ```
 
-En Hostinger, agrega `SHEETS_WEBHOOK_URL` como variable de entorno.
+En Render, agrega `SHEETS_WEBHOOK_URL` en **Environment** del servicio.
 
 Cada envío del formulario se guarda en el servidor (para `/resultados`) y también se reenvía a la hoja.
+
+## Deploy en Render
+
+El repo incluye `render.yaml`. Al conectar el repositorio en Render (Blueprint / Web Service):
+
+- Build: `npm install`
+- Start: `npm start`
+- Health check: `/api/health`
+
+Formulario: `https://TU-SERVICIO.onrender.com/`  
+Resultados: `https://TU-SERVICIO.onrender.com/resultados`

@@ -203,10 +203,14 @@ app.use((req, res) => {
   res.sendFile(path.join(publicDir, "index.html"));
 });
 
-app.listen(PORT, () => {
-  ensureStore();
-  console.log(`Brief Mercadotecnia YAAVS → http://localhost:${PORT}`);
-  console.log(`Resultados en vivo → http://localhost:${PORT}/resultados`);
-  if (SHEETS_WEBHOOK_URL) console.log("Google Sheets webhook: configurado");
-  else console.log("Google Sheets webhook: pendiente (SHEETS_WEBHOOK_URL)");
-});
+if (require.main === module) {
+  app.listen(PORT, "0.0.0.0", () => {
+    ensureStore();
+    console.log(`Brief Mercadotecnia YAAVS → http://localhost:${PORT}`);
+    console.log(`Resultados en vivo → http://localhost:${PORT}/resultados`);
+    if (SHEETS_WEBHOOK_URL) console.log("Google Sheets webhook: configurado");
+    else console.log("Google Sheets webhook: pendiente (SHEETS_WEBHOOK_URL)");
+  });
+}
+
+module.exports = app;
