@@ -61,7 +61,7 @@
     },
     {
       id: "diseno",
-      title: "Diseño / adaptación",
+      title: "Sección 5 · Diseño / adaptación",
       tone: "violet",
       fields: [
         ["textoListo", "Texto aprobado"],

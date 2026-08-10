@@ -602,21 +602,22 @@
             })}
           </div>
 
-          <div class="section${needsDiseñoBlock() ? "" : " is-hidden"}" id="sec5" ${needsDiseñoBlock() ? "" : 'style="display:none"'}>
+          <div class="section" id="sec5">
             <div class="section-head">
               <div class="section-num">Sección 5</div>
-              <h2 class="section-title">Diseño gráfico o adaptación</h2>
+              <h2 class="section-title">Preguntas condicionales por servicio</h2>
             </div>
+            <p class="section-note">Bloque A · Diseño gráfico o adaptación. Obligatorias cuando el servicio principal es diseño o actualización de un material existente.</p>
             ${fieldBlock({
               id: "textoListo",
               label: "¿El texto que deberá llevar el diseño ya está completo y aprobado?",
-              required: true,
+              required: needsDiseñoBlock(),
               body: choiceGroup(TEXTO_LISTO, a.textoListo, "textoListo"),
             })}
             ${fieldBlock({
               id: "lineaGrafica",
               label: "¿Debe conservarse alguna línea gráfica existente?",
-              required: true,
+              required: needsDiseñoBlock(),
               body: choiceGroup(LINEAS_GRAFICAS, a.lineaGrafica, "lineaGrafica"),
             })}
           </div>
@@ -705,13 +706,6 @@
     toggle("ofertaVigencia", a.tieneOferta === "Sí");
     toggle("entregableOtro", a.entregables.includes("Otro"));
     toggle("canalOtro", a.canales.includes("Otro"));
-
-    const sec5 = document.getElementById("sec5");
-    if (sec5) {
-      const show = needsDiseñoBlock();
-      sec5.style.display = show ? "" : "none";
-      sec5.classList.toggle("is-hidden", !show);
-    }
   }
 
   function readTextFields() {

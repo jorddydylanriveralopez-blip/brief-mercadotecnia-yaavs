@@ -269,6 +269,13 @@ h2 {
   letter-spacing: -0.015em;
 }
 
+.section-note {
+  margin: 0 0 14px;
+  color: var(--muted, #5b6b7c);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
 .field-block {
   display: grid;
   gap: 8px;
