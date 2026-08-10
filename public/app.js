@@ -148,11 +148,6 @@
     "Entiendo que Mercadotecnia confirmará la viabilidad y programación de la solicitud.",
   ];
 
-  const DISEÑO_SERVICIOS = new Set([
-    "Diseño gráfico",
-    "Actualización o adaptación de un material existente",
-  ]);
-
   const state = {
     done: false,
     submitting: false,
@@ -218,10 +213,6 @@
 
   function needsCoberturaDetalle() {
     return state.answers.cobertura.some((c) => COBERTURA_DETALLE.has(c));
-  }
-
-  function needsDiseñoBlock() {
-    return DISEÑO_SERVICIOS.has(state.answers.servicio);
   }
 
   function isEmail(v) {
