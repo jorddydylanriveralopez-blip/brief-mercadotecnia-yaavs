@@ -276,6 +276,24 @@ h2 {
   line-height: 1.45;
 }
 
+.service-block {
+  display: grid;
+  gap: 16px;
+  margin-top: 6px;
+  padding: 16px 16px 4px;
+  border-radius: 14px;
+  background: rgba(31, 111, 191, 0.04);
+  border: 1px solid rgba(31, 111, 191, 0.12);
+}
+
+.service-block-title {
+  margin: 0;
+  font-size: 0.98rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  color: var(--ink, #0f1c2e);
+}
+
 .field-block {
   display: grid;
   gap: 8px;

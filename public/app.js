@@ -327,10 +327,8 @@
     if (a.entregables.includes("Otro") && a.entregableOtro.trim().length < 2) e.entregableOtro = true;
     if (!a.canales.length) e.canales = true;
     if (a.canales.includes("Otro") && a.canalOtro.trim().length < 2) e.canalOtro = true;
-    if (needsDiseñoBlock()) {
-      if (!a.textoListo) e.textoListo = true;
-      if (!a.lineaGrafica) e.lineaGrafica = true;
-    }
+    if (!a.textoListo) e.textoListo = true;
+    if (!a.lineaGrafica) e.lineaGrafica = true;
     if (!a.fechaPropuesta) e.fechaPropuesta = true;
     if (!a.fechaFinal) e.fechaFinal = true;
     else if (a.fechaPropuesta && a.fechaFinal < a.fechaPropuesta) e.fechaFinal = true;
@@ -607,19 +605,23 @@
               <div class="section-num">Sección 5</div>
               <h2 class="section-title">Preguntas condicionales por servicio</h2>
             </div>
-            <p class="section-note">Bloque A · Diseño gráfico o adaptación. Obligatorias cuando el servicio principal es diseño o actualización de un material existente.</p>
-            ${fieldBlock({
-              id: "textoListo",
-              label: "¿El texto que deberá llevar el diseño ya está completo y aprobado?",
-              required: needsDiseñoBlock(),
-              body: choiceGroup(TEXTO_LISTO, a.textoListo, "textoListo"),
-            })}
-            ${fieldBlock({
-              id: "lineaGrafica",
-              label: "¿Debe conservarse alguna línea gráfica existente?",
-              required: needsDiseñoBlock(),
-              body: choiceGroup(LINEAS_GRAFICAS, a.lineaGrafica, "lineaGrafica"),
-            })}
+            <div class="service-block">
+              <h3 class="service-block-title">Bloque A. Diseño gráfico o adaptación</h3>
+              ${fieldBlock({
+                id: "textoListo",
+                label: "A1. ¿El texto que deberá llevar el diseño ya está completo y aprobado?",
+                required: true,
+                help: "Opción única",
+                body: choiceGroup(TEXTO_LISTO, a.textoListo, "textoListo"),
+              })}
+              ${fieldBlock({
+                id: "lineaGrafica",
+                label: "A2. ¿Debe conservarse alguna línea gráfica existente?",
+                required: true,
+                help: "Opción única",
+                body: choiceGroup(LINEAS_GRAFICAS, a.lineaGrafica, "lineaGrafica"),
+              })}
+            </div>
           </div>
 
           <div class="section" id="sec6">

@@ -61,11 +61,11 @@
     },
     {
       id: "diseno",
-      title: "Sección 5 · Diseño / adaptación",
+      title: "Sección 5 · Bloque A · Diseño gráfico o adaptación",
       tone: "violet",
       fields: [
-        ["textoListo", "Texto aprobado"],
-        ["lineaGrafica", "Línea gráfica"],
+        ["textoListo", "A1. Texto aprobado"],
+        ["lineaGrafica", "A2. Línea gráfica"],
       ],
     },
     {
