@@ -16,7 +16,6 @@
         ["marcaOtra", "Marca (otra)"],
         ["servicio", "Servicio principal"],
         ["servicioOtro", "Servicio (otro)"],
-        ["resumen", "Resumen"],
       ],
     },
     {
@@ -25,10 +24,8 @@
       tone: "navy",
       fields: [
         ["antecedentes", "Antecedentes"],
-        ["problema", "Problema / oportunidad"],
         ["objetivo", "Objetivo"],
         ["objetivoOtro", "Objetivo (otro)"],
-        ["resultado", "Resultado esperado"],
         ["publico", "Público"],
         ["cobertura", "Cobertura"],
         ["coberturaDetalle", "Detalle cobertura"],
@@ -106,10 +103,7 @@
   ]);
 
   const LONG_FIELDS = new Set([
-    "resumen",
     "antecedentes",
-    "problema",
-    "resultado",
     "publico",
     "mensaje",
     "ofertaDetalle",
@@ -351,9 +345,6 @@
     const items = [
       ["Área", r.area || r.areaOtra],
       ["Nombre", r.nombre],
-      ["Puesto", r.puesto],
-      ["Correo", r.correo],
-      ["Teléfono", r.telefono],
     ];
     return `
       <div class="contact-strip">

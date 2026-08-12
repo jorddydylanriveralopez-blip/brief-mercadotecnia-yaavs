@@ -157,20 +157,14 @@
       area: "",
       areaOtra: "",
       nombre: "",
-      puesto: "",
-      correo: "",
-      telefono: "",
       proyecto: "",
       marca: "",
       marcaOtra: "",
       servicio: "",
       servicioOtro: "",
-      resumen: "",
       antecedentes: "",
-      problema: "",
       objetivo: "",
       objetivoOtro: "",
-      resultado: "",
       publico: [],
       cobertura: [],
       coberturaDetalle: "",
@@ -213,15 +207,6 @@
 
   function needsCoberturaDetalle() {
     return state.answers.cobertura.some((c) => COBERTURA_DETALLE.has(c));
-  }
-
-  function isEmail(v) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(v).trim());
-  }
-
-  function isPhone(v) {
-    const digits = String(v).replace(/\D/g, "");
-    return digits.length >= 10 && digits.length <= 15;
   }
 
   function choiceGroup(options, selected, key, multi = false) {
@@ -288,9 +273,6 @@
     if (!a.area) e.area = true;
     if (a.area === "Otra" && a.areaOtra.trim().length < 2) e.areaOtra = true;
     if (a.nombre.trim().length < 3) e.nombre = true;
-    if (a.puesto.trim().length < 2) e.puesto = true;
-    if (!isEmail(a.correo)) e.correo = true;
-    if (!isPhone(a.telefono)) e.telefono = true;
     if (a.proyecto.trim().length < 3) e.proyecto = true;
     if (!a.marca) e.marca = true;
     if (a.marca === "Otra" && a.marcaOtra.trim().length < 2) e.marcaOtra = true;
@@ -298,12 +280,9 @@
     if (a.servicio === "Otro servicio de Mercadotecnia" && a.servicioOtro.trim().length < 3) {
       e.servicioOtro = true;
     }
-    if (a.resumen.trim().length < 10) e.resumen = true;
     if (a.antecedentes.trim().length < 10) e.antecedentes = true;
-    if (a.problema.trim().length < 10) e.problema = true;
     if (!a.objetivo) e.objetivo = true;
     if (a.objetivo === "Otro" && a.objetivoOtro.trim().length < 3) e.objetivoOtro = true;
-    if (a.resultado.trim().length < 10) e.resultado = true;
     if (!a.publico.length) e.publico = true;
     if (!a.cobertura.length) e.cobertura = true;
     if (needsCoberturaDetalle() && a.coberturaDetalle.trim().length < 3) e.coberturaDetalle = true;
@@ -383,35 +362,12 @@
               hidden: a.area !== "Otra",
               body: textInput("areaOtra", "text", "Nombre del área"),
             })}
-            <div class="fields-row">
-              ${fieldBlock({
-                id: "nombre",
-                label: "Nombre completo del solicitante",
-                required: true,
-                body: textInput("nombre", "text", "Nombre y apellidos", 'autocomplete="name"'),
-              })}
-              ${fieldBlock({
-                id: "puesto",
-                label: "Puesto",
-                required: true,
-                body: textInput("puesto", "text", "Tu puesto o cargo", 'autocomplete="organization-title"'),
-              })}
-            </div>
-            <div class="fields-row">
-              ${fieldBlock({
-                id: "correo",
-                label: "Correo electrónico",
-                required: true,
-                body: textInput("correo", "email", "nombre@empresa.com", 'autocomplete="email"'),
-              })}
-              ${fieldBlock({
-                id: "telefono",
-                label: "Número telefónico utilitario",
-                required: true,
-                help: "Incluye lada. Ejemplo: 55 1234 5678",
-                body: textInput("telefono", "tel", "55 0000 0000", 'autocomplete="tel"'),
-              })}
-            </div>
+            ${fieldBlock({
+              id: "nombre",
+              label: "Nombre completo del solicitante",
+              required: true,
+              body: textInput("nombre", "text", "Nombre y apellidos", 'autocomplete="name"'),
+            })}
           </div>
 
           <div class="section" id="sec2">
@@ -452,13 +408,6 @@
               hidden: a.servicio !== "Otro servicio de Mercadotecnia",
               body: textArea("servicioOtro"),
             })}
-            ${fieldBlock({
-              id: "resumen",
-              label: "Resume tu solicitud en una o dos frases",
-              required: true,
-              help: "Explica concretamente qué necesitas que desarrolle Mercadotecnia.",
-              body: textArea("resumen"),
-            })}
           </div>
 
           <div class="section" id="sec3">
@@ -474,12 +423,6 @@
               body: textArea("antecedentes"),
             })}
             ${fieldBlock({
-              id: "problema",
-              label: "¿Qué problema, necesidad u oportunidad se busca atender?",
-              required: true,
-              body: textArea("problema"),
-            })}
-            ${fieldBlock({
               id: "objetivo",
               label: "Objetivo principal",
               required: true,
@@ -491,13 +434,6 @@
               required: true,
               hidden: a.objetivo !== "Otro",
               body: textInput("objetivoOtro"),
-            })}
-            ${fieldBlock({
-              id: "resultado",
-              label: "¿Qué resultado concreto esperas obtener?",
-              required: true,
-              help: "Describe cómo se vería un resultado exitoso.",
-              body: textArea("resultado"),
             })}
             ${fieldBlock({
               id: "publico",
